@@ -1,3 +1,4 @@
+const { O_DIRECTORY } = require('constants');
 const fs = require('fs');
 const http = require('http');
 const url = require('url');
@@ -47,10 +48,17 @@ const server = http.createServer((req, res) => {
     console.log(req.url);
 
     const pathName = req.url;
-    if(pathName === '/' ||pathName === '/overview'){
+    if(pathName === '/' || pathName === '/overview'){
         res.end('This is the overview');
     }else if (pathName === '/product'){
         res.end('This is the product');
+    }else if(pathName === '/api'){
+        fs.readFile(`${__dirname}/dev-data/data.json`,'utf-8', (err, data) => {
+            const productData = JSON.parse(data);
+           // console.log(productData);
+           res.writeHead(200, {'Content-type': 'application/json'});
+        res.end(data);
+    });
     }else{
         // http header is basically tell about the response that we are sending back.
         res.writeHead(404,{
