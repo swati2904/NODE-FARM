@@ -1,5 +1,9 @@
 const fs = require('fs');
 const http = require('http');
+const url = require('url');
+
+
+
 // const hello = 'Hello World';
 // console.log(hello);
 
@@ -40,8 +44,21 @@ const http = require('http');
 // createServer call a callback function each time when the server will fired each time when the new request comes.
 
 const server = http.createServer((req, res) => {
-    console.log(req);
-    res.end('Hello from the server');
+    console.log(req.url);
+
+    const pathName = req.url;
+    if(pathName === '/' ||pathName === '/overview'){
+        res.end('This is the overview');
+    }else if (pathName === '/product'){
+        res.end('This is the product');
+    }else{
+        // http header is basically tell about the response that we are sending back.
+        res.writeHead(404,{
+            'Content-type': 'text/html',
+            'my-own-header':'hello-world'
+        });
+    res.end('<h1>Page not found!</h1>');
+    }
 });
 
 server.listen(8000,'127.0.0.1', ()=> {
