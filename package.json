@@ -1,0 +1,26 @@
+{
+  "name": "node-farm",
+  "version": "1.0.0",
+  "description": "Learning node.js",
+  "main": "index.js",
+  "dependencies": {
+    "slugify": "^1.4.5",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swati2904/NODE-FARM.git"
+  },
+  "author": "swati saxena",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swati2904/NODE-FARM/issues"
+  },
+  "homepage": "https://github.com/swati2904/NODE-FARM#readme"
+}
